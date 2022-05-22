@@ -24,7 +24,7 @@ function PopularRecipes() {
         return (
           <Card key={index}>
             <h1>{recipe.title}</h1>
-            <img src={recipe.image} alt={recipe.title} />
+            <img src={recipe.image} alt={recipe.title} title={recipe.title}/>
           </Card>
         );
       })}
