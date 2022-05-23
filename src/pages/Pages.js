@@ -1,13 +1,16 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 //pages
 import Home from "./Home";
+import Cuisine from "./Cuisine";
 
 function Pages() {
   return (
-    <>
-      <Home />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/cuisine/:type" element={<Cuisine />} />
+    </Routes>
   );
 }
 

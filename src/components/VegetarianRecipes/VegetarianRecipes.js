@@ -13,8 +13,7 @@ function VegetarianRecipes() {
   }, []);
 
   async function getVegetarianRecipes() {
-
-    const checkVegetarianRecipes = localStorage.getItem('vegetarianRecipes');
+    const checkVegetarianRecipes = localStorage.getItem("vegetarianRecipes");
 
     if (checkVegetarianRecipes) {
       setVegetarianRecipes(JSON.parse(checkVegetarianRecipes));
@@ -23,11 +22,10 @@ function VegetarianRecipes() {
         `https://api.spoonacular.com/recipes/random?number=15&tags=vegetarian&apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await response.json();
-      localStorage.setItem('vegetarianRecipes', JSON.stringify(data.recipes));
+      localStorage.setItem("vegetarianRecipes", JSON.stringify(data.recipes));
       console.log(data.recipes);
       setVegetarianRecipes(data.recipes);
     }
-
   }
 
   return (
@@ -43,14 +41,10 @@ function VegetarianRecipes() {
       >
         {vegetarianRecipes.map((recipe, index) => {
           return (
-            <SplideSlide key={index}>
+            <SplideSlide key={index} title={recipe.title}>
               <Card>
                 <p>{recipe.title}</p>
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  title={recipe.title}
-                />
+                <img src={recipe.image} alt={recipe.title} />
                 <Gradient />
               </Card>
             </SplideSlide>

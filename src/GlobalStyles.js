@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = styled.div`
+export const GlobalStyles = createGlobalStyle`
   :root {
-    --gray-text-color: rgba(59, 59, 59);
+    --gray-text-color: rgb(59,59,59);
   }
 
   h4 {

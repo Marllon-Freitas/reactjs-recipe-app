@@ -13,8 +13,7 @@ function PopularRecipes() {
   }, []);
 
   async function getPopularRecipes() {
-
-    const checkPopularRecipes = localStorage.getItem('popularRecipes');
+    const checkPopularRecipes = localStorage.getItem("popularRecipes");
 
     if (checkPopularRecipes) {
       setPopularRecipes(JSON.parse(checkPopularRecipes));
@@ -23,11 +22,10 @@ function PopularRecipes() {
         `https://api.spoonacular.com/recipes/random?number=15&apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await response.json();
-      localStorage.setItem('popularRecipes', JSON.stringify(data.recipes));
+      localStorage.setItem("popularRecipes", JSON.stringify(data.recipes));
       console.log(data.recipes);
       setPopularRecipes(data.recipes);
     }
-
   }
 
   return (
@@ -43,14 +41,10 @@ function PopularRecipes() {
       >
         {popularRecipes.map((recipe, index) => {
           return (
-            <SplideSlide key={index}>
+            <SplideSlide key={index} title={recipe.title}>
               <Card>
                 <p>{recipe.title}</p>
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  title={recipe.title}
-                />
+                <img src={recipe.image} alt={recipe.title} />
                 <Gradient />
               </Card>
             </SplideSlide>

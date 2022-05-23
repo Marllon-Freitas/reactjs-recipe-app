@@ -1,15 +1,19 @@
+import { BrowserRouter } from "react-router-dom";
+
 //pages
 import Pages from "./pages/Pages";
+import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
 
 //globalStyles
 import { GlobalStyles } from "./GlobalStyles";
 
-
 function App() {
   return (
-    <GlobalStyles>
+    <BrowserRouter>
+      <GlobalStyles />
+      <CategoryFilter />
       <Pages />
-    </GlobalStyles>
+    </BrowserRouter>
   );
 }
 
