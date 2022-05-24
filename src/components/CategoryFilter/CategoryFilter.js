@@ -1,39 +1,51 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 //icons
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles, GiChopsticks } from "react-icons/gi";
-import { Wrapper, IconsList } from "./styles";
+import { GiNoodles, GiChopsticks, GiTacos, GiCroissant } from "react-icons/gi";
+import { Wrapper, IconsList, StyleLink } from "./styles";
 
 function CategoryFilter() {
   return (
     <Wrapper>
       <IconsList>
-        <NavLink to={'/cuisine/italian'}>
+        <StyleLink to={'/cuisine/Italian'}>
           <li className="category-filter">
             <FaPizzaSlice />
             <h4>Italian Food</h4>
           </li>
-        </NavLink>
-        <NavLink to={'/cuisine/american'}>
+        </StyleLink>
+        <StyleLink to={'/cuisine/American'}>
           <li className="category-filter">
             <FaHamburger />
             <h4>American</h4>
           </li>
-        </NavLink>
-        <NavLink to={'/cuisine/Thai'}>
+        </StyleLink>
+        <StyleLink to={'/cuisine/French'}>
           <li className="category-filter">
-            <GiNoodles />
-            <h4>Thai</h4>
+            <GiCroissant />
+            <h4>French</h4>
           </li>
-        </NavLink>
-        <NavLink to={'/cuisine/japan'}>
+        </StyleLink>
+        <StyleLink to={'/cuisine/Mexican'}>
+          <li className="category-filter">
+            <GiTacos />
+            <h4>Mexican</h4>
+          </li>
+        </StyleLink>
+        <StyleLink to={'/cuisine/Japanese'}>
           <li className="category-filter">
             <GiChopsticks />
             <h4>Japanese</h4>
           </li>
-        </NavLink>
+        </StyleLink>
+        <StyleLink to={'/cuisine/Thai'}>
+          <li className="category-filter">
+            <GiNoodles />
+            <h4>Thai</h4>
+          </li>
+        </StyleLink>
       </IconsList>
     </Wrapper>
   );

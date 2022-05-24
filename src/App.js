@@ -6,11 +6,13 @@ import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
 
 //globalStyles
 import { GlobalStyles } from "./GlobalStyles";
+import SearchInput from "./components/SearchInput/SearchInput";
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
+      <SearchInput />
       <CategoryFilter />
       <Pages />
     </BrowserRouter>
