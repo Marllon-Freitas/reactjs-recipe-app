@@ -3,9 +3,13 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  width: 100%;
+  margin: 4rem 0rem;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: 1.5rem 0rem;
+  }
 `;
 
 export const IconsList = styled.ul`
@@ -26,21 +30,19 @@ export const StyleLink = styled(NavLink)`
   cursor: pointer;
   background: linear-gradient(35deg, #494949 0%, #313131 100%);
 
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-    h4 {
-      font-size: 0.75rem;
-      font-weight: bold;
-      color: #fff;
-    }
-    svg {
-      font-size: 1.5rem;
-      color: #fff;
-    }
+  h4 {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  svg {
+    font-size: 1.5rem;
+    color: #fff;
   }
 
   &.active {

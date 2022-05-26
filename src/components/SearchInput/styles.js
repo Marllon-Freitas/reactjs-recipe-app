@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   margin: 4rem 0rem;
+  
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: 1.5rem 0rem;
+  }
 `;
 
 export const FormStyle = styled.form`

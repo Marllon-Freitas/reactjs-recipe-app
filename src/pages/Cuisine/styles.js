@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
   gap: 2rem;
+  width: 100%;
+  padding: 1rem;
 `;
 
 export const CuisineCard = styled.div`
@@ -22,5 +24,10 @@ export const CuisineCard = styled.div`
   h4 {
     text-align: center;
     padding: 1rem;
+  }
+  @media (max-width: 400px) {
+    img {
+      width: 95%;
+    }
   }
 `;

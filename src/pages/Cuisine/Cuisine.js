@@ -30,6 +30,12 @@ function Cuisine() {
               whileTap={{ scale: 0.9 }}
               key={cuisine.id}
               className="cuisine-card"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <img
                 src={cuisine.image}
