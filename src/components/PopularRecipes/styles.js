@@ -3,11 +3,19 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   margin: 4rem 0rem;
-  
+
   @media (max-width: 768px) {
     width: 95%;
     margin: 1.5rem 0rem;
   }
+`;
+
+export const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
 `;
 
 export const Card = styled.div`
@@ -42,6 +50,10 @@ export const Card = styled.div`
     text-shadow: 0 0 0.5rem #000;
     justify-content: center;
     transform: translateY(-2.5rem);
+  }
+
+  @media (max-width: 780px) {
+    margin: 0;
   }
 `;
 

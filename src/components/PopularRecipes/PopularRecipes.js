@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, Gradient, Wrapper } from "./styles";
+import { Card, Gradient, Wrapper, GridWrapper } from "./styles";
+import { Link } from "react-router-dom";
 
 // carrousel imports
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -7,6 +8,11 @@ import "@splidejs/splide/dist/css/splide.min.css";
 
 function PopularRecipes() {
   const [popularRecipes, setPopularRecipes] = useState([]);
+  const [windowSize, setWindowSize] = useState(0);
+
+  window.addEventListener("resize", function () {
+    setWindowSize(window.innerWidth);
+  });
 
   useEffect(() => {
     getPopularRecipes();
@@ -31,26 +37,46 @@ function PopularRecipes() {
   return (
     <Wrapper>
       <h3>Popular Recipes</h3>
-      <Splide
-        options={{
-          perPage: 3,
-          gap: "2.5rem",
-          focus: "center",
-          pagination: false,
-        }}
-      >
-        {popularRecipes.map((recipe, index) => {
-          return (
-            <SplideSlide key={index} title={recipe.title}>
-              <Card>
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
-                <Gradient />
-              </Card>
-            </SplideSlide>
-          );
-        })}
-      </Splide>
+      {windowSize > 650 ? (
+        <Splide
+          options={{
+            perPage: 3,
+            gap: "2.5rem",
+            focus: "center",
+            pagination: false,
+          }}
+        >
+          {popularRecipes.map((recipe, index) => {
+            return (
+              <SplideSlide key={index} title={recipe.title}>
+                <Card>
+                  <Link to={`/recipe/${recipe.id}`}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <Gradient />
+                  </Link>
+                </Card>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      ) : (
+        <GridWrapper>
+          {popularRecipes.map((recipe, index) => {
+            return (
+              <SplideSlide key={index} title={recipe.title}>
+                <Card>
+                  <Link to={`/recipe/${recipe.id}`}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <Gradient />
+                  </Link>
+                </Card>
+              </SplideSlide>
+            );
+          })}
+        </GridWrapper>
+      )}
     </Wrapper>
   );
 }
