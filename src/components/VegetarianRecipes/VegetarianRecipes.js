@@ -10,12 +10,13 @@ function VegetarianRecipes() {
   const [vegetarianRecipes, setVegetarianRecipes] = useState([]);
   const [windowSize, setWindowSize] = useState(0);
 
-  window.addEventListener("resize", function () {
+  window.addEventListener("resize", () => {
     setWindowSize(window.innerWidth);
   });
 
   useEffect(() => {
     getVegetarianRecipes();
+    setWindowSize(window.innerWidth);
   }, []);
 
   async function getVegetarianRecipes() {
@@ -35,7 +36,12 @@ function VegetarianRecipes() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{ opacity: 0 }}
+    >
       <h3>Vegetarian Recipes</h3>
       {windowSize > 650 ? (
         <Splide

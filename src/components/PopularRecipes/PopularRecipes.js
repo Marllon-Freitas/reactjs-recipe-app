@@ -10,12 +10,13 @@ function PopularRecipes() {
   const [popularRecipes, setPopularRecipes] = useState([]);
   const [windowSize, setWindowSize] = useState(0);
 
-  window.addEventListener("resize", function () {
+  window.addEventListener("resize", () => {
     setWindowSize(window.innerWidth);
   });
 
   useEffect(() => {
     getPopularRecipes();
+    setWindowSize(window.innerWidth);
   }, []);
 
   async function getPopularRecipes() {
@@ -35,7 +36,12 @@ function PopularRecipes() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{ opacity: 0 }}
+    >
       <h3>Popular Recipes</h3>
       {windowSize > 650 ? (
         <Splide

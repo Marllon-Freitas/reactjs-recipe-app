@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { CuisineCard, Wrapper } from "./Cuisine/styles";
 
 function SearchedResults() {
-  const [searchedResults, setSearchedResults] = useState({isErrorFromResponse: true});
+  const [searchedResults, setSearchedResults] = useState([]);
   const params = useParams();
 
   useEffect(() => {
     getSearchedRecipes(params.search);
-  }, [params.search]);
+    console.log(searchedResults.length);
+  }, [params.search, searchedResults.length]);
 
   async function getSearchedRecipes(searchName) {
     const response = await fetch(
@@ -17,21 +18,18 @@ function SearchedResults() {
     );
     const data = await response.json();
     if (data.code) {
-      setSearchedResults({isErrorFromResponse: true});
+      setSearchedResults([]);
     } else {
-      setSearchedResults([data.results]);
+      setSearchedResults(data.results);
     }
   }
 
   return (
     <>
-      {searchedResults.length === 0 ? (
+      {searchedResults.length < 1 ? (
         <h1>No results found for "{params.search}"</h1>
       ) : (
-        searchedResults.isErrorFromResponse ? (
-          <h1>A API não retornou nada</h1>
-        ) : (
-          <Wrapper>
+        <Wrapper>
           {searchedResults.map((searchedResults) => {
             return (
               <CuisineCard key={searchedResults.id}>
@@ -58,7 +56,6 @@ function SearchedResults() {
             );
           })}
         </Wrapper>
-        )
       )}
     </>
   );

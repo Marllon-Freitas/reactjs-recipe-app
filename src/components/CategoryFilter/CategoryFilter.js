@@ -13,12 +13,21 @@ import "@splidejs/splide/dist/css/splide.min.css";
 function CategoryFilter() {
   const [windowSize, setWindowSize] = useState(0);
 
-  window.addEventListener("resize", function () {
+  useEffect(() => {
+    setWindowSize(window.innerWidth);
+  }, []);
+
+  window.addEventListener("resize", () => {
     setWindowSize(window.innerWidth);
   });
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{ opacity: 0 }}
+    >
       <Splide
         options={{
           perPage: `${windowSize > 650 ? 6 : windowSize < 250 ? 2 : 4}`,
