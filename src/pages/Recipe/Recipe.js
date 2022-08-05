@@ -51,20 +51,7 @@ function Recipe() {
               <h3>No instructions available found</h3>
             ) : (
               <div>
-                <h3
-                  dangerouslySetInnerHTML={{
-                    __html: individualRecipeDetails.summary,
-                  }}
-                >
-                  {individualRecipeDetails.summary}
-                </h3>
-                <h3
-                  dangerouslySetInnerHTML={{
-                    __html: individualRecipeDetails.instructions,
-                  }}
-                >
-                  {individualRecipeDetails.instructions}
-                </h3>
+                
               </div>
             )}
           </>

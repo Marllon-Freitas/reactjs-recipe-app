@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CuisineCard, Wrapper } from "./Cuisine/styles";
 
@@ -32,7 +32,8 @@ function SearchedResults() {
         <Wrapper>
           {searchedResults.map((searchedResults) => {
             return (
-              <CuisineCard key={searchedResults.id}>
+              <Link to={`/recipe/${searchedResults.id}`}>
+                 <CuisineCard key={searchedResults.id}>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -53,6 +54,7 @@ function SearchedResults() {
                   <h4>{searchedResults.title}</h4>
                 </motion.div>
               </CuisineCard>
+              </Link>
             );
           })}
         </Wrapper>
